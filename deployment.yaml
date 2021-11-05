@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      # modify the following line with your Docker Hub account name
+      - image: index.docker.io/mohvah/flask_web:latest             
+        name: flask
+        ports:
+        - containerPort: 80
