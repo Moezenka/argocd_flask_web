@@ -1,0 +1,13 @@
+kind: HTTPProxy
+metadata:
+  name: flask-httpproxy
+  namespace: flask
+spec:
+  virtualhost:
+    fqdn: mohvah-flask.gotlab.local
+  routes:
+    - conditions:
+      - prefix: /
+      services:
+        - name: flask-service
+          port: 8080
