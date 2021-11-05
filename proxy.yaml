@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
   name: flask-httpproxy
