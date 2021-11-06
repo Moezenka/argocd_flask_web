@@ -8,9 +8,14 @@ spec:
     fqdn: mohvah-flask.gotlab.local
     tls:
       passthrough: true
+  tcpproxy:
+    services:
+    - name: flask-service
+      port: 80
+  # this route allows port 80 to reach the argocd-server which will return 301 to HTTPS
   routes:
-    - conditions:
-      - prefix: /
-      services:
-        - name: flask-service
-          port: 80
+  - services:
+    - name: flask-service
+      port: 80
+    conditions:
+    - prefix: /
