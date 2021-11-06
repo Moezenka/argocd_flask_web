@@ -1,21 +1,14 @@
 apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
-  name: flask-httpproxy
-  namespace: flask
+  name: test
+  namespace: flask 
 spec:
   virtualhost:
     fqdn: mohvah-flask.gotlab.local
-    tls:
-      passthrough: true
-  tcpproxy:
-    services:
-    - name: flask-service
-      port: 80
-  # this route allows port 80 to reach the argocd-server which will return 301 to HTTPS
   routes:
-  - services:
-    - name: flask-service
-      port: 80
-    conditions:
-    - prefix: /
+    - conditions:
+      - prefix: /
+      services:
+        - name: flask-service
+          port: 80
